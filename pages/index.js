@@ -18,8 +18,8 @@ const Home = ({ products, bannerData }) => {
   return (
     <>
       {/* Hero Banner Components */}
-      <HeroBanner />
-
+      {console.log(bannerData.length && bannerData[0])}
+      <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
       <div className="products-heading">
         <h2>Beset Selling Products</h2>
         <p>Speakers of many variations</p>
@@ -39,7 +39,7 @@ export const getServerSideProps = async () => {
   const products = await client.fetch(query);
 
   // get (fetch) bannerData in {lib=>} client
-  const bannerQuery = `*[_type=="product"]`;
+  const bannerQuery = `*[_type=="banner"]`;
   const bannerData = await client.fetch(bannerQuery);
 
   return {
