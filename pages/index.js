@@ -18,19 +18,21 @@ const Home = ({ products, bannerData }) => {
   return (
     <>
       {/* Hero Banner Components */}
-      {console.log(bannerData.length && bannerData[0])}
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
       <div className="products-heading">
         <h2>Beset Selling Products</h2>
         <p>Speakers of many variations</p>
       </div>
+
+      {/* Products */}
       <div className="products-container">
         {products?.map((product) => (
           <Product key={product._id} product={product} />
         ))}
       </div>
+
       {/* Footer  Components */}
-      <FooterBanner />
+      <FooterBanner footerBanner={bannerData && bannerData[0]} />
     </>
   );
 };
