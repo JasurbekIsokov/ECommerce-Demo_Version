@@ -31,9 +31,13 @@ export const StateContext = ({ children }) => {
         totalPrice,
         totalQuantities,
         qty,
+        incQty,
+        decQty,
       }}
     >
       {children}
     </Context.Provider>
   );
 };
+
+export const useStateContext = () => useContext(Context);
