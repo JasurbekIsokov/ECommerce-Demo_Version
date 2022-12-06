@@ -1,5 +1,8 @@
 import React from "react";
 
+// lib => client
+import { client } from "../lib/client";
+
 // Components
 import {
   Product,
@@ -14,7 +17,9 @@ import {
 const Home = () => {
   return (
     <>
-      HeroBanner
+      {/* Hero Banner Components */}
+      <HeroBanner />
+
       <div className="products-heading">
         <h2>Beset Selling Products</h2>
         <p>Speakers of many variations</p>
@@ -22,7 +27,9 @@ const Home = () => {
       <div className="products-container">
         {["Product 1", "Product 2"].map((product) => product)}
       </div>
-      Footer
+
+      {/* Footer  Components */}
+      <Footer />
     </>
   );
 };
