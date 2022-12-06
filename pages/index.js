@@ -14,7 +14,7 @@ import {
   Cart,
 } from "../Components";
 
-const Home = () => {
+const Home = ({ products, bannerData }) => {
   return (
     <>
       {/* Hero Banner Components */}
@@ -25,13 +25,26 @@ const Home = () => {
         <p>Speakers of many variations</p>
       </div>
       <div className="products-container">
-        {["Product 1", "Product 2"].map((product) => product)}
+        {products?.map((product) => product.name)}
       </div>
-
       {/* Footer  Components */}
-      <Footer />
+      <FooterBanner />
     </>
   );
+};
+
+export const getServerSideProps = async () => {
+  // get (fetch) products in {lib=>} client
+  const query = `*[_type=="product"]`;
+  const products = await client.fetch(query);
+
+  // get (fetch) bannerData in {lib=>} client
+  const bannerQuery = `*[_type=="product"]`;
+  const bannerData = await client.fetch(bannerQuery);
+
+  return {
+    props: { products, bannerData },
+  };
 };
 
 export default Home;
