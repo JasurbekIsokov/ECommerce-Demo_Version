@@ -4,15 +4,7 @@ import React from "react";
 import { client } from "../lib/client";
 
 // Components
-import {
-  Product,
-  Navbar,
-  Layout,
-  HeroBanner,
-  Footer,
-  FooterBanner,
-  Cart,
-} from "../Components";
+import { Product, HeroBanner, FooterBanner } from "../Components";
 
 const Home = ({ products, bannerData }) => {
   return (
