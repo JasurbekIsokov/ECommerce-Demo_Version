@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import { useRouter } from "next/router";
+
 import Link from "next/link";
 import {
   AiOutlineMinus,
@@ -12,6 +14,7 @@ import toast from "react-hot-toast";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 import getStripe from "../lib/getStripe";
+import Success from "../pages/success";
 
 const Cart = () => {
   const cartRef = useRef();
@@ -24,24 +27,24 @@ const Cart = () => {
     onRemove,
   } = useStateContext();
 
+  let router = useRouter();
+
   const handleCheckout = async () => {
-    const stripe = await getStripe();
+    setShowCart(false);
+    router.push("/success");
 
-    const response = await fetch("/api/stripe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: { cartItems: JSON.stringify(cartItems) },
-    });
-
-    if (response.statusCode === 500) return;
-
-    const data = await response.json();
-
-    toast.loading("Redirecting...");
-
-    stripe.redirectToCheckout({ sessionId: data.id });
+    // const stripe = await getStripe();
+    // const response = await fetch("/api/stripe", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: { cartItems: JSON.stringify(cartItems) },
+    // });
+    // if (response.statusCode === 500) return;
+    // const data = await response.json();
+    // toast.loading("Redirecting...");
+    // stripe.redirectToCheckout({ sessionId: data.id });
   };
 
   return (
@@ -129,9 +132,11 @@ const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div className="btn-container">
+              {/* <Link href="/success"> */}
               <button type="button" className="btn" onClick={handleCheckout}>
                 Pay with Stripe
               </button>
+              {/* </Link> */}
             </div>
           </div>
         )}
