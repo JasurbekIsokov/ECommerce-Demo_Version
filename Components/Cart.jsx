@@ -29,6 +29,7 @@ const Cart = () => {
 
   let router = useRouter();
 
+  // BUY butten clicked
   const handleCheckout = async () => {
     setShowCart(false);
     router.push("/success");
@@ -129,11 +130,9 @@ const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div className="btn-container">
-              {/* <Link href="/success"> */}
               <button type="button" className="btn" onClick={handleCheckout}>
                 Pay with Stripe
               </button>
-              {/* </Link> */}
             </div>
           </div>
         )}
