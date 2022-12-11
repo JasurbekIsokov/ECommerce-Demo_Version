@@ -32,7 +32,6 @@ const Cart = () => {
   const handleCheckout = async () => {
     setShowCart(false);
     router.push("/success");
-
     // const stripe = await getStripe();
     // const response = await fetch("/api/stripe", {
     //   method: "POST",
@@ -100,9 +99,7 @@ const Cart = () => {
                         >
                           <AiOutlineMinus />
                         </span>
-                        <span className="num" onClick="">
-                          {item.quantity}
-                        </span>
+                        <span className="num">{item.quantity}</span>
                         <span
                           className="plus"
                           onClick={() =>
