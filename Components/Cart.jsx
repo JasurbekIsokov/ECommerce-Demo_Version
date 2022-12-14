@@ -13,8 +13,7 @@ import toast from "react-hot-toast";
 
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
-
-import Success from "../pages/success";
+import getStripe from "../lib/getStripe";
 
 const Cart = () => {
   const cartRef = useRef();
@@ -29,21 +28,21 @@ const Cart = () => {
 
   let router = useRouter();
 
-  // BUY butten clicked
+  // Pay button clicked
   const handleCheckout = async () => {
     setShowCart(false);
     router.push("/success");
     // const stripe = await getStripe();
-    // const response = await fetch("/api/stripe", {
-    //   method: "POST",
+    // const response = await fetch('/api/stripe', {
+    //   method: 'POST',
     //   headers: {
-    //     "Content-Type": "application/json",
+    //     'Content-Type': 'application/json',
     //   },
-    //   body: { cartItems: JSON.stringify(cartItems) },
+    //   body: JSON.stringify(cartItems),
     // });
-    // if (response.statusCode === 500) return;
+    // if(response.statusCode === 500) return;
     // const data = await response.json();
-    // toast.loading("Redirecting...");
+    // toast.loading('Redirecting...');
     // stripe.redirectToCheckout({ sessionId: data.id });
   };
 

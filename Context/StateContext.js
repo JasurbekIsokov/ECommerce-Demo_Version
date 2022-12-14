@@ -13,7 +13,6 @@ export const StateContext = ({ children }) => {
   let foundProduct;
   let index;
 
-  // ADD to Card
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find(
       (item) => item._id === product._id
@@ -43,7 +42,6 @@ export const StateContext = ({ children }) => {
     toast.success(`${qty} ${product.name} added to the cart.`);
   };
 
-  // Remove to Card
   const onRemove = (product) => {
     foundProduct = cartItems.find((item) => item._id === product._id);
     const newCartItems = cartItems.filter((item) => item._id !== product._id);
@@ -58,7 +56,6 @@ export const StateContext = ({ children }) => {
     setCartItems(newCartItems);
   };
 
-  // Toggle cart quantity
   const toggleCartItemQuanitity = (id, value) => {
     foundProduct = cartItems.find((item) => item._id === id);
     index = cartItems.findIndex((product) => product._id === id);
@@ -83,12 +80,10 @@ export const StateContext = ({ children }) => {
     }
   };
 
-  // Increment quantity
   const incQty = () => {
     setQty((prevQty) => prevQty + 1);
   };
 
-  // Decrement quantity
   const decQty = () => {
     setQty((prevQty) => {
       if (prevQty - 1 < 1) return 1;
